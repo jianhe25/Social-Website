@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
 <?php 
@@ -33,6 +33,7 @@ echo "<title>$appname$userstr</title>";
   }
   
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 
@@ -60,7 +61,7 @@ echo "<title>$appname$userstr</title>";
 	</div>
 </div>
 <div class="container-fluid">
-      <div class="row-fluid">
+      <div class="row-fluid" >
 			<div class="span3">
 			  <div class="well sidebar-nav">
 				<ul class="nav nav-list">
@@ -81,9 +82,9 @@ echo "<title>$appname$userstr</title>";
 else
 { ?>
 
-	  <li class="active"><a href="index.php">Home</a></li>
+	  <li class="active"><a href="login.php">Login</a></li>
 	  <li><a href="signup.php">Register</a></li>
-	  <li><a href="login.php">Login</a></li>
+	  
 	  </ul>
 		</div><!--/.nav-collapse -->
 	</div>

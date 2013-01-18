@@ -36,29 +36,49 @@ elseif (isset($_GET['remove']))
 $result = queryMysql("SELECT user FROM members ORDER BY user");
 $num    = mysql_num_rows($result);
 
-echo "<h3>其他运动员</h3><ul>";
+echo "<h3>Other members</h3>".
+	 "<div id='userList' class = 'UserList'>".
+	 "<ul>";
 
 for ($j = 0 ; $j < $num ; ++$j)
 {
     $row = mysql_fetch_row($result);
     if ($row[0] == $user) continue;
-    
-    echo "<li><a href='members.php?view=$row[0]'>$row[0]</a>";
-    $follow = "关注";
-
-    $t1 = mysql_num_rows(queryMysql("SELECT * FROM friends
+   
+    echo "<li>";
+	echo "<a href='members.php?view=$row[0]' class='UserPic'>";
+	if (file_exists($row[0].".jpg"))
+		echo "<img src='$row[0].jpg' onload='clipImage(this)'>";
+	else
+		echo "<img src='default.jpg' onload='clipImage(this)'>";
+	echo "</a>";
+?>
+	<p class='UserInformation'>
+	<?php echo "<strong> <a href='members.php?view=$row[0]'>$row[0]</a> <strong>"; ?>
+	</p>
+	<div class='UserModify'>
+	
+<?php	
+	$follow = "Follow";
+	$t1 = mysql_num_rows(queryMysql("SELECT * FROM friends
         WHERE user='$row[0]' AND friend='$user'"));
     $t2 = mysql_num_rows(queryMysql("SELECT * FROM friends
         WHERE user='$user' AND friend='$row[0]'"));
 
-    if (($t1 + $t2) > 1) echo " &harr; 你的好友";
-    elseif ($t1)         echo " &larr; 你的关注";
-    elseif ($t2)       { echo " &rarr; 正在关注你";
-	                      $follow = "接受"; }
+    if (($t1 + $t2) > 1) echo " &harr; Your friend";
+    elseif ($t1)         echo " &larr; You are following";
+    elseif ($t2)       { echo " &rarr; is following you";
+	                      $follow = "Accept"; }
     
-    if (!$t1) echo " [<a href='members.php?add=".$row[0]    . "'>$follow</a>]";
-    else      echo " [<a href='members.php?remove=".$row[0] . "'>取消关注</a>]";
+    if (!$t1) echo " [<a href='members.php?add=$row[0]'>$follow</a>]";
+    else      echo " [<a href='members.php?remove=$row[0]'>Unfollow</a>]";
+	
+	echo "</div>".
+		 "</li>";
 }
-?>
 
-<br /></div></body></html>
+?>
+</ul>
+</div>
+</div>
+</body></html>

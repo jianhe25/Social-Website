@@ -1,6 +1,6 @@
 <?php 
 include_once 'header.php';
-echo "<div class='main'><h3>Please enter your details to log in</h3>";
+echo "<h3>Please enter your details to log in</h3>";
 $error = $user = $pass = "";
 
 if (isset($_POST['user']))
@@ -31,20 +31,20 @@ if (isset($_POST['user']))
         }
     }
 }
+?>
 
-echo <<<_END
-<form class="form-horizontal" method='post' action='login.php'>$error
+<form class="form-horizontal" method='post' action='login.php'><?php $error ?>
   <div class="control-group">
     <label class="control-label" for="inputEmail">Email</label>
     <div class="controls">
-      <input type="text" id="inputEmail" placeholder="Email" name='user' value="$user">
+      <?php echo "<input type='text' id='inputEmail' placeholder='Email' name='user' value='$user'>"; ?>
     </div>
   </div>
   
   <div class="control-group">
     <label class="control-label" for="inputPassword">Password</label>
     <div class="controls">
-      <input type="password" id="inputPassword" placeholder="Password" name='pass' value="$pass">
+      <?php echo "<input type='password' id='inputPassword' placeholder='Password' name='pass' value='$pass'>"; ?>
     </div>
   </div>
   
@@ -57,6 +57,4 @@ echo <<<_END
     </div>
   </div>
 </form>
-_END;
-?>
-</body></html>
+</div></body></html>

@@ -6154,4 +6154,34 @@ min-height: 50px;
 	padding-top: 20px;
 	z-index: 9;
   }
-  
+
+.UserList {
+	margin: 10px 0;
+}
+.UserList li {
+	display: inline-block;
+	width: 100%;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px #E3EEF8 solid;
+}
+.UserList li a.UserPic {
+	width: 60px;
+	height: 60px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+li p.UserInformation {
+	display: block;
+	float: left;
+	line-height: 25px;
+}
+.UserList li div.UserModify {
+	float: right;
+	margin: 10px 10px 0 0;
+	padding: 5px 0 5px 10px;
+	border-left: 1px #E3EEF8 solid;
+	height: 18px;
+	position: relative;
+}
